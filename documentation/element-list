@@ -1,0 +1,5 @@
+module:FloWeekTracker
+com.floweektracker.main
+com.floweektracker.planner
+com.floweektracker.planner.plannerManagerDialogs
+com.floweektracker.tasksDatabase

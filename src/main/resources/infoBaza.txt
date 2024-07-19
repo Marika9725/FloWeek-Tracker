@@ -1,0 +1,19 @@
+#Do czego jest baza?
+Baza jest zbiorem, do którego dodajesz nazwy zadań. Dzięki temu, w sytuacji gdy masz powtarzające się zadania,
+nie musisz wielokrotnie wpisywać tych samych tytułów. Wystarczy, że wybierzesz go z istniejącej, przygotowanej przez
+siebie listy, co zaoszczędzi czas.
+
+#Dodawanie zadania do bazy
+1. Wpisz zadanie do okienka, znajdującego się po prawej stronie.
+2. Kliknij "Dodaj".
+
+#Usuwanie zadania z bazy
+1. Kliknij w wybrane zadanie, znajdujące się po lewej stronie.
+2. Kliknij w przycisk "Usuń."
+
+#Przycisk "Anuluj"
+Aby wycofać się z wybranego lub wpisanego zadania, wciśnij przycisk "Anuluj".
+
+#Wychodzenie z bazy
+Aby wyjść z bazy, kliknij przycisk X, znajdujący się w prawym, górnym rogu okienka.
+#END

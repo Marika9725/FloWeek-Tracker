@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="ANALYZE_INJECTED_CODE" value="false" />
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d43e6fa4-21fd-40b3-9232-23746331b99f" name="Changes" comment="" />
+    <list default="true" id="8fd83f6f-9329-455b-b7ad-d5bd393a868d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/FloWeekTracker.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/FloWeekTracker1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jrt_fs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jrt_fs1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FloWeekTracker.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/ButtonsText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/InfoPanelUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/MainListeners.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/MainPanelUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/planner/PlannerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/planner/PlannerUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/planner/WeekDayPanelUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/planner/plannerManagerDialogs/DialogListeners.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/planner/plannerManagerDialogs/TaskAddingDialogUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/planner/plannerManagerDialogs/TaskEditingDialogUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksDatabaseListeners.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksDatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksDatabaseUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/CalendarManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/TaskAddingDialogUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/TaskEditingDialogUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/WeekDayPanelUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/WeekDays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/planner/WeekDays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/SingleTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/SingleTaskManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/TaskAddingDialogCreator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/TasksListComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksListComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/TasksManager.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,72 +53,59 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="module-info" />
+        <option value="Enum" />
+        <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2fq9v4azPdkrLytnZJFA0zZiSfo" />
+  <component name="ProjectId" id="2gWGqDx6sciBaCvAu6qDTtE614D" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "JAR Application.Kalendarz-1.0-SNAPSHOT-jar-with-dependencies.jar.executor": "Coverage",
-    "JAR Application.Kalendarz-1.0-SNAPSHOT.jar.executor": "Coverage",
-    "JAR Application.original-Kalendarz-1.0-SNAPSHOT.jar.executor": "Coverage",
-    "Maven.FloWeek Tracker [clean].executor": "Run",
-    "Maven.FloWeekTracker [clean].executor": "Run",
-    "Maven.FloWeekTracker [package].executor": "Run",
-    "Maven.Kalendarz [-Ddetail=true].executor": "Run",
-    "Maven.Kalendarz [clean].executor": "Run",
-    "Maven.Kalendarz [compile,exec:java...].executor": "Run",
-    "Maven.Kalendarz [compile].executor": "Run",
-    "Maven.Kalendarz [install].executor": "Run",
-    "Maven.Kalendarz [package].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Moje_dokumenty/Programowanie/GitHub/FloWeek Tracker",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "build.tools"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Maven.FloWeekTracker [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.FloWeekTracker [compile,exec:java...].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.FloWeekTracker [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.FloWeekTracker [package].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Moje_dokumenty/Programowanie/GitHub/FloWeek Tracker/src/main/java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;D:/Moje_dokumenty/Programowanie/GitHub/FloWeek Tracker/FloWeek Tracker.iml&quot;
   }
-}]]></component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn -Ddetail=true" />
-    </option>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Moje_dokumenty\Programowanie\GitHub\FloWeek Tracker\src\main\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Moje_dokumenty\Programowanie\GitHub" />
+    </key>
   </component>
-  <component name="RunManager" selected="Maven.Kalendarz [compile,exec:java...]">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.Main" />
-      <module name="FloWeekTracker" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Kalendarz [compile,exec:java...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="FloWeekTracker [compile,exec:java...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -113,30 +137,27 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Maven.Kalendarz [compile,exec:java...]" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d43e6fa4-21fd-40b3-9232-23746331b99f" name="Changes" comment="" />
-      <created>1714517972634</created>
+      <changelist id="8fd83f6f-9329-455b-b7ad-d5bd393a868d" name="Changes" comment="" />
+      <created>1715806111970</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1714517972634</updated>
+      <updated>1715806111970</updated>
     </task>
     <servers />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Kalendarz$original_Kalendarz_1_0_SNAPSHOT_jar.ic" NAME="original-Kalendarz-1.0-SNAPSHOT.jar Coverage Results" MODIFIED="1714556513090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/Kalendarz$Kalendarz_1_0_SNAPSHOT_jar.ic" NAME="Kalendarz-1.0-SNAPSHOT.jar Coverage Results" MODIFIED="1714561451454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/Kalendarz$.ic" NAME=" Coverage Results" MODIFIED="1714561895495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/tasksManagement/TaskAddingDialogCreator.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

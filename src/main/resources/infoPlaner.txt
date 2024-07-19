@@ -1,0 +1,28 @@
+#Dodawanie zadania do planera
+UWAGA! Jeśli nazwa zadania nie znajduje się na liście, należy w pierwszej kolejności dodać ją do bazy zadań.
+1. Kliknij przycisk "dodaj zadanie do planera".
+2. Wprowadź dane: wybierz zadanie z bazy, wybierz dzień tygodnia, godzinę, priorytet zadania oraz dodaj krótki opis.
+3. Kliknij przycisk "zapisz".
+
+#Edytowanie zadania
+1. Dwukrotnie kliknij w wybrane przez siebie zadanie.
+2. Wprowadź zmiany.
+3. Kliknij przycisk "zapisz".
+
+#Podgląd dnia
+Kliknij dwukrotnie w nazwę wybranego dnia tygodnia
+
+#Usuwanie zadania z planera
+1. Kliknij lewym przyciskiem myszy w wybrane przez siebie zadanie.
+2. Kliknij w przycisk "usuń zadanie".
+
+#Resetowanie planera
+1. Kliknij przycisk "Wyczyść planer".
+2. Wybierz poszczególne dni tygodnia lub wybierz "Zaznacz wszystkie".
+3. Kliknij przycisk "OK".
+
+#Resetowanie punktów
+1. Kliknij przycisk "Wyzeruj punkty".
+2. Wybierz poszczególne dni tygodnia lub wybierz "Zaznacz wszystkie".
+3. Kliknij przycisk "OK".
+#END
