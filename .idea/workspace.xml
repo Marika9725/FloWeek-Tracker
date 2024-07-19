@@ -1,63 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="ALL" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fd83f6f-9329-455b-b7ad-d5bd393a868d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/FloWeekTracker.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/FloWeekTracker1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jrt_fs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jrt_fs1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FloWeekTracker.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/ButtonsText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/InfoPanelUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/MainListeners.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/MainPanelUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/planner/PlannerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/planner/PlannerUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/planner/WeekDayPanelUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/planner/plannerManagerDialogs/DialogListeners.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/planner/plannerManagerDialogs/TaskAddingDialogUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/planner/plannerManagerDialogs/TaskEditingDialogUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksDatabaseListeners.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksDatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksDatabaseUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="2406ada3-854f-45e2-a4ce-5b883bdd0be5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/FloWeekTracker.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/FloWeekTracker1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jrt_fs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jrt_fs1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jrt_fs2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/target.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/CalendarManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/TaskAddingDialogUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/TaskEditingDialogUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/WeekDayPanelUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calendarManagement/WeekDays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/planner/WeekDays.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/SingleTaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/SingleTaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/TaskAddingDialogCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/TasksListComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tasksDatabase/TasksListComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tasksManagement/TasksManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Enum" />
-        <option value="Record" />
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,42 +33,36 @@
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2gWGqDx6sciBaCvAu6qDTtE614D" />
+  <component name="ProjectId" id="2jL8BvY2VoimLORH26NgcwqfsmI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Maven.FloWeekTracker [-v].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.FloWeekTracker [clean,install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.FloWeekTracker [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.FloWeekTracker [compile,exec:java...].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.FloWeekTracker [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.FloWeekTracker [package].executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;Maven.FloWeekTracker [install].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Moje_dokumenty/Programowanie/GitHub/FloWeek Tracker/src/main/java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Moje_dokumenty/Programowanie/Java/Kurs Java - podręcznik/mymodapp&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;D:/Moje_dokumenty/Programowanie/GitHub/FloWeek Tracker/FloWeek Tracker.iml&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Moje_dokumenty\Programowanie\GitHub\FloWeek Tracker\src\main\java" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Moje_dokumenty\Programowanie\GitHub" />
+      <recent name="D:\Moje_dokumenty\Programowanie\GitHub\FloWeek Tracker\docs" />
+      <recent name="D:\Moje_dokumenty\Programowanie\GitHub\FloWeek Tracker\pictures-readme\logos" />
+      <recent name="D:\Moje_dokumenty\Programowanie\GitHub\FloWeek Tracker\pictures-readme\app-pictures" />
+      <recent name="D:\Moje_dokumenty\Programowanie\GitHub\FloWeek Tracker\pictures-readme" />
+      <recent name="D:\Moje_dokumenty\Programowanie\GitHub\FloWeek Tracker\pictures-readme\features" />
     </key>
   </component>
   <component name="RunManager">
@@ -119,7 +80,7 @@
               <list>
                 <option value="compile" />
                 <option value="exec:java" />
-                <option value="-Dexec.mainClass=main.Main" />
+                <option value="-Dexec.mainClass=com.floweektracker.main.Main" />
               </list>
             </option>
             <option name="multimoduleDir" />
@@ -141,23 +102,23 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8fd83f6f-9329-455b-b7ad-d5bd393a868d" name="Changes" comment="" />
-      <created>1715806111970</created>
+      <changelist id="2406ada3-854f-45e2-a4ce-5b883bdd0be5" name="Changes" comment="" />
+      <created>1721154868679</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1715806111970</updated>
+      <updated>1721154868679</updated>
     </task>
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/tasksManagement/TaskAddingDialogCreator.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
