@@ -126,7 +126,7 @@ public class Main extends JFrame {
      * @see #Main()
      */
     private File createDirectory() {
-        var plannerFolder = new File(System.getProperty("user.home"), "/FloWeekTracker");
+        var plannerFolder = new File (System.getenv("LOCALAPPDATA"), "/FloWeek Tracker");
 
         while (!plannerFolder.exists()) {
             var result = JOptionPane.showConfirmDialog(

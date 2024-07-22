@@ -37,10 +37,13 @@
                 <version>3.3.0</version>
                 <configuration>
                     <archive>
-                        <manifest>
+                        <manifestEntries>
                             <addClasspath>true</addClasspath>
                             <mainClass>com.floweektracker.main.Main</mainClass>
-                        </manifest>
+                            <Created-by>FloWeek Tracker</Created-by>
+                            <Author>Maria Szewczyk</Author>
+                            <Language>PL</Language>
+                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>

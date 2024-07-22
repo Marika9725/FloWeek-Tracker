@@ -1,4 +1,4 @@
-![logo.png](pictures-readme/app-pictures/logo.png)
+<img src="pictures-readme/app-pictures/logo.png" alt="logo" style="width: 100%">
 
 FloWeekTracker is a Windows application designed in Polish to organize weekly tasks and improve productivity.
 
@@ -7,13 +7,16 @@ FloWeekTracker is a Windows application designed in Polish to organize weekly ta
 * [Main features](#main-features)
 * [Built with](#built-with)
 * [Installation and running](#installation-and-running)
-    * [For Developers](#for-developers)
+    * [For Developers](#for-developers-)
         * [Requirements](#requirements)
         * [Installation](#installation)
         * [Running](#running)
     * [For end users](#for-end-users-windows)
 * [Code example/issues](#code-exampleissues)
-* [License](#license)
+* [Documentation](#documentation)
+* [Licenses](#licenses)
+  * [For FloWeek Tracker](#for-floweek-tracker)
+  * [For Libraries](#for-used-libraries)
 * [Sources](#sources-ℹ-)
 * [Contact](#contact)
 
@@ -79,9 +82,11 @@ Users can also check the total points earned for each day as well as the achieve
 
 ## Built with🔧
 
+<p>
 <img src="pictures-readme/logos/Java.png" width="80" alt="Java" style="margin-right: 10px">
 <img src="pictures-readme/logos/Maven.png" width="80" alt="Maven" style="margin-right: 10px">
 <img src="pictures-readme/logos/Gson.png" width="80" alt="Gson">
+</p>
 
 ## Installation and running⚙️
 
@@ -172,11 +177,36 @@ java -jar target/FloWeekTracker-1.0-jar-with-dependencies.jar
 If you have any issues, please let me know in the <a href="https://github.com/Marika9725/FloWeek-Tracker/issues">issues
 section</a> or directly at <a href="mailto:m.szewczyk2@o2.pl">m.szewczyk2@o2.pl</a>
 
-## License🔱
+## Documentation📑
 
-This software is **read-only**. You are allowed to use it for personal purposes, and redistribution is prohibited.
+Full documentation of the FloWeek Tracker is
+available <a href="https://marika9725.github.io/FloWeek-Tracker/FloWeekTracker/module-summary.html">here</a>. It
+contains detailed information about the constructed packages, classes, methods and fields.
 
-Click [here](LICENSE) to get more information about your rights.
+## Licenses🔱
+
+For complete license terms, see the [LICENSE](LICENSE.md) file.
+
+### For FloWeek Tracker🔱
+
+This software is licensed under a custom license with the following terms:
+
+1. **Usage:** For personal use and recruitment purposes only. Commercial use is prohibited.
+2. **Modification:** No modifications are allowed. The software must remain unchanged.
+3. **Redistribution:** Redistribution, sale, or offering of the software is not permitted.
+4. **Attribution:** Proper credit must be given to the original author.
+5. **Privacy:** Data is stored locally on your device. Compliance with data protection laws is your responsibility.
+6. **Dependencies:** Includes libraries licensed under GNU GPL-2.0 and Apache License 2.0. These licenses apply to the
+   libraries but not to my own code.
+7. **Contact:** For issues, contact <a href="mailto:m.szewczyk2@o2.pl">email</a>
+   or <a href="www.linkedin.com/in/maria-szewczyk/">LinkedIn</a>
+   8**Disclaimer:** Provided "as if" without warranties. The Licensor is not liable for any damages.
+
+### For used libraries🔱
+
+* **Maven**: Apache 2.0 license
+* **Gson**: Apache 2.0 license
+* **Java**: GPL 2.0 license
 
 ## Sources ℹ️ ️
 
