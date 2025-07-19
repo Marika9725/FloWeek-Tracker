@@ -1,0 +1,250 @@
+package com.floweektracker.util;
+
+
+import com.floweektracker.TestHelper;
+import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.*;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+
+import javax.swing.*;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.util.Locale;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
+
+class AppDirectoryManagerTest {
+    private final TestHelper helper = new TestHelper();
+    private final AppDirectoryManager manager = AppDirectoryManager.getInstance();
+    private File directory;
+
+    @BeforeEach
+    void setUp(TestInfo info) throws IOException {
+        helper.deleteDirectory(new File("data"));
+        var tags = info.getTags();
+
+        if (tags.contains("defaultFolder")) {
+            directory = new File(System.getProperty("user.dir"), "data");
+            manager.setDataFolder(directory);
+        } else if (tags.contains("userDirectory")) directory = Files.createTempDirectory("FloWeekTracker").toFile();
+        else directory = null;
+    }
+
+    //region tearDown
+    @AfterEach
+    void tearDown() {
+        if (directory != null && directory.exists()) helper.deleteDirectory(directory);
+        manager.setFolderChooser(createFolderChooser());
+    }
+
+
+    @NotNull
+    private JFileChooser createFolderChooser() {
+        var folderChooser = new JFileChooser();
+        folderChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        folderChooser.setLocale(Locale.of("pl", "PL"));
+
+        return folderChooser;
+    }
+    //endregion
+
+    @Test
+    void instancesShouldBeSame() {
+        //given+when
+        var appDirectoryManager2 = AppDirectoryManager.getInstance();
+
+        //then
+        assertThat(manager, is(appDirectoryManager2));
+    }
+
+    @Test
+    void shouldShowOptionDialog() {
+        try (var optionDialog = mockStatic(JOptionPane.class)) {
+            //given+when
+            manager.createDirectory();
+
+            //then
+            optionDialog.verify(() -> JOptionPane.showConfirmDialog(
+                    eq(null),
+                    any(String.class),
+                    eq("Tworzenie folderu FloWeekTracker"),
+                    eq(JOptionPane.YES_NO_CANCEL_OPTION)
+            ));
+        }
+    }
+
+    @Tag("defaultFolder")
+    @Test
+    void shouldCreateDataFolderInDefaultFolderWhenUserClickYesOption() {
+        try (var mockOptionPane = mockStatic(JOptionPane.class)) {
+            mockOptionPane.when(() -> JOptionPane.showConfirmDialog(
+                    eq(null),
+                    any(String.class),
+                    eq("Tworzenie folderu FloWeekTracker"),
+                    eq(JOptionPane.YES_NO_CANCEL_OPTION)
+            )).thenReturn(JOptionPane.YES_OPTION);
+
+            //when
+            var actualDirectory = manager.createDirectory();
+
+            //then
+            assertAll(
+                    () -> assertTrue(actualDirectory.exists()),
+                    () -> assertThat(actualDirectory.getName(), is("data")),
+                    () -> assertThat(actualDirectory, is(directory))
+            );
+        }
+    }
+
+    @Test
+    void shouldShowErrorDialogWhenThereIsIOException() throws IOException {
+        //given
+        var tempFile = File.createTempFile("floweek", ".tmp");
+        tempFile.deleteOnExit();
+        var impossibleFolder = new File(tempFile, "subdir");
+        manager.setDataFolder(impossibleFolder);
+
+        try (
+                var mockedOptionPane = mockStatic(JOptionPane.class);
+                var mockedDialogUtils = mockStatic(DialogUtils.class)
+        ) {
+            mockedOptionPane.when(() -> JOptionPane.showConfirmDialog(
+                    eq(null),
+                    any(String.class),
+                    eq("Tworzenie folderu FloWeekTracker"),
+                    eq(JOptionPane.YES_NO_CANCEL_OPTION)
+            )).thenAnswer(new Answer<Integer>() {
+                private int count = 0;
+
+                @Override
+                public Integer answer(InvocationOnMock invocation) {
+                    if (count++ == 0) return JOptionPane.YES_OPTION;
+                    throw new RuntimeException("Test cancel interruption");
+                }
+            });
+
+            //when
+            var exception = assertThrows(RuntimeException.class, manager::createDirectory);
+            assertThat(exception.getMessage(), is("Test cancel interruption"));
+
+            //then
+            mockedDialogUtils.verify(() -> DialogUtils.showMessageDialog(any(), any()), times(1));
+        }
+    }
+
+    @Tag("userDirectory")
+    @Test
+    void shouldCreateDataFolderInChosenFolderWhenUserClickNoOption() {
+        //given
+        try (var mockOptionPane = mockStatic(JOptionPane.class)) {
+            mockOptionPane.when(() -> JOptionPane.showConfirmDialog(
+                    eq(null),
+                    any(String.class),
+                    eq("Tworzenie folderu FloWeekTracker"),
+                    eq(JOptionPane.YES_NO_CANCEL_OPTION)
+            )).thenReturn(JOptionPane.NO_OPTION);
+
+            var fileChooser = mock(JFileChooser.class);
+            manager.setFolderChooser(fileChooser);
+            when(fileChooser.showOpenDialog(null)).thenReturn(JFileChooser.APPROVE_OPTION);
+            when(fileChooser.getSelectedFile()).thenReturn(directory);
+
+            //when
+            var actualDirectory = manager.createDirectory();
+
+            //then
+            verify(fileChooser).showOpenDialog(null);
+            assertAll(
+                    () -> assertTrue(actualDirectory.exists()),
+                    () -> assertThat(actualDirectory.getName(), is("data")),
+                    () -> assertThat(actualDirectory.getParent(), is(directory.getPath()))
+            );
+        }
+    }
+
+    @Test
+    void shouldReturnNullWhenUserSelectsNoThenCancelsFolderSelection() {
+        //given
+        try (
+                var mockOptionPane = mockStatic(JOptionPane.class);
+        ) {
+            mockOptionPane.when(() -> JOptionPane.showConfirmDialog(
+                    eq(null),
+                    any(String.class),
+                    eq("Tworzenie folderu FloWeekTracker"),
+                    eq(JOptionPane.YES_NO_CANCEL_OPTION)
+            )).thenAnswer(new Answer<Integer>() {
+                private int count = 0;
+
+                @Override
+                public Integer answer(InvocationOnMock invocation) {
+                    if (count++ == 0) return JOptionPane.NO_OPTION;
+                    throw new RuntimeException("Test cancel interruption");
+                }
+            });
+
+            var fileChooser = mock(JFileChooser.class);
+            when(fileChooser.showOpenDialog(null)).thenReturn(JFileChooser.CANCEL_OPTION);
+
+            manager.setFolderChooser(fileChooser);
+
+            //when
+            var exception = assertThrows(RuntimeException.class, () -> {
+                var actualDirectory = manager.createDirectory();
+
+                //then
+                assertThat(actualDirectory, is(nullValue()));
+            });
+            assertThat(exception.getMessage(), is("Test cancel interruption"));
+            verify(fileChooser).showOpenDialog(null);
+        }
+    }
+
+    @Tag("defaultFolder")
+    @Test
+    void shouldNotCreateDataFolderWhenUserChoosesExistingDataFolder() {
+        //given
+        try (var mockOptionPane = mockStatic(JOptionPane.class)) {
+            mockOptionPane.when(() -> JOptionPane.showConfirmDialog(
+                    eq(null),
+                    any(String.class),
+                    eq("Tworzenie folderu FloWeekTracker"),
+                    eq(JOptionPane.YES_NO_CANCEL_OPTION)
+            )).thenAnswer(new Answer<Integer>() {
+                private int count = 0;
+
+                @Override
+                public Integer answer(InvocationOnMock invocation) {
+                    if (count++ == 0) return JOptionPane.NO_OPTION;
+                    throw new RuntimeException("Test cancel interruption");
+                }
+            });
+
+            var fileChooser = mock(JFileChooser.class);
+            manager.setFolderChooser(fileChooser);
+            when(fileChooser.showOpenDialog(null)).thenReturn(JFileChooser.APPROVE_OPTION);
+            when(fileChooser.getSelectedFile()).thenReturn(directory);
+
+            //when
+            var exception = assertThrows(RuntimeException.class, () -> {
+                var actualDirectory = manager.createDirectory();
+
+                //then
+                assertAll(
+                        () -> assertFalse(actualDirectory.exists()),
+                        () -> assertThat(actualDirectory.getName(), is("data")),
+                        () -> assertThat(actualDirectory.getPath(), is(directory.getPath()))
+                );
+            });
+            verify(fileChooser, never()).showOpenDialog(null);
+            assertThat(exception.getMessage(), is("Test cancel interruption"));
+        }
+    }
+}

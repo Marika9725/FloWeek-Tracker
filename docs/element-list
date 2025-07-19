@@ -1,5 +1,8 @@
 module:FloWeekTracker
-com.floweektracker.main
-com.floweektracker.planner
-com.floweektracker.planner.plannerManagerDialogs
-com.floweektracker.tasksDatabase
+com.floweektracker
+com.floweektracker.controller
+com.floweektracker.model
+com.floweektracker.repository
+com.floweektracker.service
+com.floweektracker.util
+com.floweektracker.view

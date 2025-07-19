@@ -1,0 +1,358 @@
+package com.floweektracker.service;
+
+import com.floweektracker.controller.*;
+import com.floweektracker.model.*;
+import com.floweektracker.util.DialogUtils;
+import com.floweektracker.view.PlannerView;
+import lombok.*;
+import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
+
+/**
+ * Service for the {@link PlannerView}. This class is a singleton and is used to manage the planner's data.
+ * <br><br>
+ * Fields: {@link #service}, {@link #planner}
+ * <br><br>
+ * Add task methods: {@link #addTask(SingleTask)}, {@link #isTimeExist(LocalTime)},
+ * {@link #findIndexForNewRow(LocalTime)}, {@link #prepareNewRow(SingleTask)}
+ * <br><br>
+ * Delete task methods: {@link #deleteTask(SingleTask)}, {@link #removeRow(DefaultTableModel, int)},
+ * {@link #getCorrectValuesFromRow(LocalTime)}
+ * <br><br>
+ * Other methods: {@link #editTask(SingleTask, SingleTask)}, {@link #findRowIndex(LocalTime)},
+ * {@link #findColumnIndex(WeekDays)}, {@link #isTaskInPlanner(SingleTask)}, {@link #getSelectedValue()},
+ * {@link #getSelectedTime()}, {@link #getSelectedWeekday()}
+ * <br><br>
+ * Helper methods: {@link #prepareValue(SingleTask)}, {@link #actualizeSummarizeForWeekday(WeekDays)}
+ */
+@Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class PlannerService {
+    @Getter
+    private static final PlannerService service = new PlannerService();
+    private final PlannerView planner = PlannerView.getView();
+
+    //region addTask() methods
+
+    /**
+     * Add a given task to the planner. It checks if a time of the task is already in the planner. If it is, it updates
+     * the cell in the row, otherwise it adds a new row with the given task. Then it actualizes the summarize for the
+     * task's weekday. It returns false if the given task is null or is already in the planner.
+     *
+     * @param task a given task which should be added to the planner
+     * @return true if the task is successfully added, otherwise false.
+     * @see #isTimeExist(LocalTime)
+     * @see #actualizeSummarizeForWeekday(WeekDays)
+     * @see #isTaskInPlanner(SingleTask)
+     * @see com.floweektracker.controller.TaskAddingDialogController#addTask(SingleTask)
+     * @see #editTask(SingleTask, SingleTask)
+     */
+    public boolean addTask(SingleTask task) {
+        if (task == null || isTaskInPlanner(task)) return false;
+
+        var model = (DefaultTableModel) planner.getModel();
+
+        if (isTimeExist(task.getTime())) {
+            model.setValueAt(
+                    prepareValue(task),
+                    findRowIndex(task.getTime()),
+                    findColumnIndex(task.getWeekday()));
+        } else {
+            model.insertRow(findIndexForNewRow(task.getTime()), prepareNewRow(task));
+        }
+
+        actualizeSummarizeForWeekday(task.getWeekday());
+
+        return isTaskInPlanner(task);
+    }
+
+    /**
+     * Checks if the given time is already in the first column of the {@link #planner}.
+     *
+     * @param time a given time to check
+     * @return true if the time is present, otherwise false
+     * @see #addTask(SingleTask)
+     */
+    private boolean isTimeExist(LocalTime time) {
+        return IntStream.range(0, planner.getRowCount() - 1)
+                .mapToObj(row -> planner.getValueAt(row, 0).toString())
+                .anyMatch(value -> value.equals(time.toString()));
+    }
+
+    /**
+     * Finds index for the new row in the {@link #planner} by the given time. It collects all the times in the first
+     * column of the {@link #planner} to the {@link TreeSet}. Then, it adds the given time and finds its index.
+     *
+     * @param time a given time to find the index
+     * @return a new index for the new row
+     * @see #addTask(SingleTask)
+     */
+    private int findIndexForNewRow(@NotNull LocalTime time) {
+        var plannerTimes = IntStream.range(0, planner.getRowCount() - 1)
+                .mapToObj(row -> planner.getValueAt(row, 0).toString())
+                .collect(Collectors.toCollection(TreeSet::new));
+
+        plannerTimes.add(time.toString());
+
+        return plannerTimes.stream().toList().indexOf(time.toString());
+    }
+
+    /**
+     * Creates a new row with the given task for the {@link #planner}. First column contains the time of the task.
+     * Others are filled with the following way:
+     * <ul>
+     *     <li>When the day of the week equals the day of the task, the cell contains the value created by {@link #prepareValue(SingleTask)}</li>
+     *     <li>Otherwise, the cell contains a {@code "-"} symbol</li>
+     * </ul>
+     *
+     * @param task a given task for which the new row should be created
+     * @return a {@link String} array representing the new row for the {@link #planner}
+     * @see #prepareValue(SingleTask)
+     * @see #addTask(SingleTask)
+     */
+    private String[] prepareNewRow(@NotNull SingleTask task) {
+        var row = new ArrayList<String>();
+        row.add(task.getTime().toString());
+
+        for (int day = 1; day < 8; day++) {
+            var isNumDaySameAsInTask = (day == task.getWeekday().getPosition() + 1);
+            row.add(isNumDaySameAsInTask ? prepareValue(task) : "-");
+        }
+
+        return row.toArray(String[]::new);
+    }
+    //endregion
+
+    //region deleteTask() methods
+
+    /**
+     * Deletes the task from the {@link #planner}. If the row has only one task and there are more than two rows in the
+     * {@link #planner}, the row is removed. When the row has more than one task, the cell with the given task is filled
+     * with a {@code "-"} symbol. At the end, the summarize for the task's weekday is actualized. Returns false if the
+     * given task is null or is not in the planner.
+     *
+     * @param task a given task which should be removed from the planner
+     * @return true is the task is successfully deleted, otherwise false
+     * @see MainPanelController#deleteTask()
+     * @see MainPanelController#deleteTasksForWeekdays(List)
+     * @see com.floweektracker.controller.TaskAddingDialogController#addTask(SingleTask)
+     * @see #editTask(SingleTask, SingleTask)
+     * @see #isTaskInPlanner(SingleTask)
+     * @see #findRowIndex(LocalTime)
+     * @see #findColumnIndex(WeekDays)
+     * @see #getCorrectValuesFromRow(LocalTime)
+     * @see #removeRow(DefaultTableModel, int)
+     * @see #actualizeSummarizeForWeekday(WeekDays)
+     */
+    public boolean deleteTask(SingleTask task) {
+        if (task == null || !isTaskInPlanner(task)) return false;
+
+        var model = (DefaultTableModel) planner.getModel();
+        var time = task.getTime();
+        var weekday = task.getWeekday();
+        var rowIndex = findRowIndex(time);
+        var columnIndex = findColumnIndex(weekday);
+        var valuesLength = getCorrectValuesFromRow(time).length;
+
+        if(valuesLength == 1) removeRow(model, rowIndex);
+        else model.setValueAt("-", rowIndex, columnIndex);
+
+        actualizeSummarizeForWeekday(weekday);
+
+        return !isTaskInPlanner(task);
+    }
+
+    /**
+     * Removes row from the {@link #planner} by the given index.
+     *
+     * @param model    a model of the {@link #planner}
+     * @param rowIndex an index of the row which should be removed
+     * @see #deleteTask(SingleTask)
+     */
+    private void removeRow(DefaultTableModel model, int rowIndex) {
+        if (SwingUtilities.isEventDispatchThread()) model.removeRow(rowIndex);
+        else {
+            try {
+                SwingUtilities.invokeAndWait(() -> model.removeRow(rowIndex));
+            } catch (InterruptedException | InvocationTargetException e) {throw new RuntimeException(e);}
+        }
+    }
+
+    /**
+     * @param time a given time for which the tasks should be found.
+     * @return a {@link String} array containing the tasks under the given time from all weekdays or null when the given
+     * time is null
+     * @see #findRowIndex(LocalTime)
+     * @see #deleteTask(SingleTask)
+     */
+    private String[] getCorrectValuesFromRow(@NotNull LocalTime time) {
+        var model = planner.getModel();
+        var row = findRowIndex(time);
+
+        return IntStream.range(0, 7)
+                .mapToObj(column -> model.getValueAt(row, column).toString())
+                .filter(value -> !value.isBlank() && (!value.equals("-") && !value.equals(time.toString())))
+                .toArray(String[]::new);
+    }
+    //endregion
+
+    /**
+     * Edits an old task in the planner. If old task or edited task is null or they are equals, it returns false. Then,
+     * it deletes the old task and adds the edited one. If adding new task fails, it runs rollback and returns a
+     * result.
+     *
+     * @param oldTask    a task which should be deleted
+     * @param editedTask a new task which should be added
+     * @return true if the task is successfully edited, otherwise false
+     * @see #isTaskInPlanner(SingleTask)
+     * @see #deleteTask(SingleTask)
+     * @see #addTask(SingleTask)
+     * @see DialogUtils#rollback(SingleTask, Consumer, Function)
+     * @see MainPanelController#resetPoints(List)
+     * @see com.floweektracker.controller.TaskEditingDialogController#editTask(SingleTask, SingleTask)
+     */
+    public boolean editTask(SingleTask oldTask, SingleTask editedTask) {
+        if (oldTask == null || editedTask == null || oldTask.equals(editedTask)) return false;
+
+        if (!deleteTask(oldTask)) return false;
+        if (!addTask(editedTask)) return !DialogUtils.rollback(oldTask, service::addTask, this::isTaskInPlanner);
+
+        return !isTaskInPlanner(oldTask) && isTaskInPlanner(editedTask);
+    }
+
+    /**
+     * @param time a given time for which the row index should be found
+     * @return an index of the row which contains the given time
+     * @see #addTask(SingleTask)
+     * @see #deleteTask(SingleTask)
+     * @see #getCorrectValuesFromRow(LocalTime)
+     */
+    public int findRowIndex(LocalTime time) {
+        return IntStream.range(0, planner.getRowCount())
+                .filter(row -> planner.getValueAt(row, 0).toString().equals(time.toString()))
+                .findFirst()
+                .orElse(0);
+    }
+
+    /**
+     * @param weekday a given weekday for which the column index should be found
+     * @return a column index which contains the given weekday
+     * @see #addTask(SingleTask)
+     * @see #deleteTask(SingleTask)
+     * @see #actualizeSummarizeForWeekday(WeekDays)
+     */
+    public int findColumnIndex(WeekDays weekday) {
+        return IntStream.range(0, planner.getColumnCount())
+                .filter(column -> planner.getValueAt(0, column).toString().equalsIgnoreCase(weekday.getWeekdayPL()))
+                .findFirst()
+                .orElse(0);
+    }
+
+    /**
+     * Try to find the given task in the {@link #planner}.
+     *
+     * @param task a given task which should be found.
+     * @return true if the task is in the planner, otherwise false.
+     */
+    public boolean isTaskInPlanner(SingleTask task) {
+        for (int row = 0; row < planner.getRowCount(); row++) {
+            var sameTimeRow = (planner.getValueAt(row, 0)).equals(task.getTime().toString());
+            if (!sameTimeRow) continue;
+
+            for (int column = 0; column < planner.getColumnCount(); column++) {
+                var value = planner.getValueAt(row, column).toString();
+                var sameColumnNames = (planner.getColumnName(column)).equalsIgnoreCase(task.getWeekday().getWeekdayPL());
+                if (!sameColumnNames) continue;
+                var samePoints = value.contains(String.format("%s/%d", task.calculatePoints(), task.getPriority()));
+                if (samePoints) return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Try to find the value of the selected cell in the {@link #planner}. It creates {@link Point} based on the
+     * selected row and column. Then, it checks if the point is valid and returns the value of the selected cell.
+     *
+     * @return a {@link String} with the value of the selected cell in the {@link #planner} or null
+     * @see MainPanelController#deleteTask()
+     */
+    public String getSelectedValue() {
+        var point = new Point(planner.getSelectedRow(), planner.getSelectedColumn());
+        return ((point.x != -1) && (point.y != -1)) ? planner.getValueAt(point.x, point.y).toString() : null;
+    }
+
+    /**
+     * Try to find the selected time in the {@link #planner}. It checks if the selected row is not the first or last
+     * row. If it is, it returns null. Otherwise, it gets a value from the selected row in the first column, parse it to
+     * {@link LocalTime} and returns.
+     *
+     * @return a {@link LocalTime} with the selected time in the {@link #planner} or null
+     * @see MainPanelController#deleteTask()
+     * @see PlannerController#editTask()
+     */
+    public LocalTime getSelectedTime() {
+        var selectedRow = planner.getSelectedRow();
+
+        return ((selectedRow > 0) && selectedRow < planner.getRowCount() - 1) ? LocalTime.parse(planner.getValueAt(selectedRow, 0).toString()) : null;
+    }
+
+    /**
+     * Try to find the selected weekday in the {@link #planner}. It gets a value from the first row in the selected
+     * column and converts it into {@link WeekDays}.
+     *
+     * @return a {@link WeekDays} with the selected weekday in the {@link #planner}
+     * @see MainPanelController#deleteTask()
+     * @see PlannerController#editTask()
+     * @see PlannerController#openFullWeekdaySchedule()
+     */
+    public WeekDays getSelectedWeekday() {
+        return WeekDays.valueOfPL(planner.getValueAt(0, planner.getSelectedColumn()).toString());
+    }
+
+    //region helper methods
+
+    /**
+     * Prepares a value for the {@link #planner} based on the given task. The value contains the name of the task, sum
+     * of achieved points and total points to achieve.
+     *
+     * @param task a given task for which the value to the {@link #planner} should be prepared
+     * @return a {@link String} with the prepared value to the {@link #planner}
+     * @see #addTask(SingleTask)
+     * @see #prepareNewRow(SingleTask)
+     */
+    private String prepareValue(@NotNull SingleTask task) {
+        var value = String.format("%s(%d/%d)", task.getTaskName(), task.calculatePoints(), task.getPriority());
+
+        return task.isDone() ? String.format("<html><strike>%s</strike></html>", value) : value;
+    }
+
+    /**
+     * Actualizes summarize for the given weekday. Creates a new summarize based on the sum of the actual achieved
+     * points and total points to achieve. Then, sets it in the {@link #planner} as a new value at the last row under
+     * the given weekday.
+     *
+     * @param weekday a given weekday for which a summary should be actualized
+     * @see #addTask(SingleTask)
+     * @see #deleteTask(SingleTask)
+     */
+    private void actualizeSummarizeForWeekday(WeekDays weekday) {
+        var tasksService = TasksService.getService();
+        var achievedPoints = tasksService.countPoints(weekday, SingleTask::calculatePoints);
+        var totalPoints = tasksService.countPoints(weekday, SingleTask::getPriority);
+        var newSummarize = String.format("%d/%d", achievedPoints, totalPoints);
+
+        planner.setValueAt(newSummarize, planner.getRowCount() - 1, findColumnIndex(weekday));
+    }
+    //endregion
+}

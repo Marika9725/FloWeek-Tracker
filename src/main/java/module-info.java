@@ -1,26 +1,26 @@
 /**
- * <p>This module delivers packages needed to create a FloWeek Tracker application.</p>
+ * <p>This module provides packages required for the FloWeek Tracker application.</p>
  * <br>
  * <p><b>FloWeekTracker description</b></p>
- * <p>FloWeekTracker is an application in Polish designed to improve weekly productivity. This application has two
- * parts:</p>
+ * <p>FloWeekTracker is an application in Polish language designed to improve weekly productivity. This application has
+ * two parts:</p>
  * <ul>
- *     <li><u>Database</u>: Contains and manages task names to prevent the user from entering the same task names.
+ *     <li><u>Task Names</u>: Contains and manages unique task names which are used during task creation.
  *     Users can:
  *     <ul>
- *         <li>add or remove task name in the database,</li>
- *         <li>check the task list</li>
+ *         <li>add or remove task name,</li>
+ *         <li>check the task names list</li>
  *        </ul>
  *    </li>
  * </ul>
  * <ul>
- *    <li><u>Planner</u>: Allows creating a personal weekly calendar, where each task includes a description,
- *        time, weekday, and points. Users can:
+ *    <li><u>Planner</u>: Allows creating a personal weekly calendar, where each task includes a task name, description,
+ *        time, weekday, and done status. Users can:
  *        <ul>
- *            <li>add, edit and remove a task in the planner,</li>
+ *            <li>add, edit or remove a task in the planner,</li>
  *            <li>check the daily plan for each day of the week,</li>
- *            <li>mark task as done,</li>
- *            <li>check the total points earned for each day as well as the achieved points.</li>
+ *            <li>mark tasks as done,</li>
+ *            <li>check the total points earned for each day as well as the points to achieve.</li>
  *        </ul>
  *    </li>
  * </ul>
@@ -65,7 +65,9 @@ module FloWeekTracker {
     requires com.google.gson;
     requires java.datatransfer;
     requires java.desktop;
+    requires static lombok;
+    requires annotations;
 
-    opens com.floweektracker.tasksDatabase to com.google.gson;
-    opens com.floweektracker.planner to com.google.gson;
+    opens com.floweektracker.repository to com.google.gson;
+    opens com.floweektracker.model to com.google.gson;
 }
