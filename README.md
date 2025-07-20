@@ -6,28 +6,27 @@ built-in points system, you can reward yourself for completing each task. You de
 When you mark it as done, the assigned points are automatically added to your daily score. Simple, motivating and
 effective.
 
-## Table of contents 📜
+## 📜 Table of contents
 
-* [Main features](#main-features)
-* [Built with](#built-with)
-* [Installation and running](#installation-and-running)
-    * [For Developers](#for-developers-)
-        * [Requirements](#requirements)
-        * [Installation](#installation)
-        * [Running](#running)
-    * [For end users](#for-end-users-windows)
-* [Testing](#testing)
-* [Code example/issues](#code-exampleissues)
-* [Documentation](#documentation)
-* [Licenses](#licenses)
-    * [For FloWeek Tracker](#for-floweek-tracker)
-    * [For Libraries](#for-used-libraries)
-* [Sources](#sources-ℹ-)
-* [Contact](#contact)
+* [Main features](#heavy_check_mark-main-features)
+  * [Database](#open_file_folder-database)
+  * [Planner](#spiral_calendar-planner)
+* [Built with](#wrench-built-with)
+* [Installation and running](#gear-installation-and-running)
+    * [For Developers](#computer-for-developers-)
+    * [For end users](#window-for-end-users-windows)
+* [Testing](#syringe-testing)
+* [Code example/issues](#mag_right-code-exampleissues)
+* [Documentation](#bookmark_tabs-documentation)
+* [Licenses](#balance_scale-licenses)
+    * [For FloWeek Tracker](#balance_scale-for-floweek-tracker)
+    * [For Libraries](#balance_scale-for-used-libraries)
+* [Sources](#information_source-sources)
+* [Contact](#telephone_receiver-contact)
 
-## Main features ✅
+## :heavy_check_mark: Main features
 
-### Database 📂
+### :open_file_folder: Database
 
 <img src="pictures-readme/app-pictures/database.png" width="400" alt="database">
 
@@ -43,7 +42,7 @@ list, and also:
 ![database-removeTaskName](pictures-readme/features/database-removeTaskName.gif)
 </details>
 
-### Planner 📆
+### :spiral_calendar: Planner
 
 <img src="pictures-readme/app-pictures/planner-main.png" width="400" alt="planner">
 
@@ -83,7 +82,7 @@ weekly planner. Both values update automatically. The total points sum changes w
 tak (e.g. changes the number of points assigned). The achieved points sum changes when the user marks a task as done or
 undone, or resets points.
 
-## Built with 🔧
+## :wrench: Built with
 
 <table>
     <tbody>
@@ -106,11 +105,11 @@ undone, or resets points.
     </tbody>
 </table>
 
-## Installation and running ⚙️
+## :gear: Installation and running
 
-### For developers 💻
+### :computer: For developers
 
-<details><summary>Requirements❗</summary>
+<details><summary>❗ Requirements</summary>
 
 To run this project locally, you need to have:
 
@@ -137,7 +136,7 @@ If you have got an older version, you can download a newer one from:
 Make sure both java and mvn commands are available in the PATH environment variable.
 </details>
 
-<details><summary>Installation⚙️</summary>
+<details><summary>⚙️ Installation</summary>
 Clone the repository
 
 ```bash
@@ -158,7 +157,7 @@ mvn clean install
 
 </details>
 
-<details><summary>Running▶️</summary>
+<details><summary>▶️ Running</summary>
 
 ```bash
 java -jar target/FloWeekTracker-1.0-jar-with-dependencies.jar
@@ -166,7 +165,7 @@ java -jar target/FloWeekTracker-1.0-jar-with-dependencies.jar
 
 </details>
 
-### For end users (Windows) 🪟
+### :window: For end users (Windows)
 
 1. Download FloWeekTracker.exe from the <a href="https://github.com/Marika9725/FloWeek-Tracker/releases">
    releases</a>.<br><br>
@@ -175,7 +174,7 @@ java -jar target/FloWeekTracker-1.0-jar-with-dependencies.jar
 3. After installing an application, double-click on the app icon.<br><br>
 4. Enjoy using the application.
 
-## Testing 🧪
+## :syringe: Testing
 
 <img src="pictures-readme/others/test-coverage.png" alt="test-coverage">
 
@@ -193,22 +192,22 @@ To run the tests and check details about test coverage, follow the steps below:
    ```
 3. Check the test coverage report in the `target/site/jacoco/index.html` file.
 
-## Code Example/Issues 🔎
+## :mag_right: Code Example/Issues
 
 If you have any issues, please let me know in the <a href="https://github.com/Marika9725/FloWeek-Tracker/issues">issues
 section</a> or directly at <a href="mailto:m.szewczyk2@o2.pl">m.szewczyk2@o2.pl</a>
 
-## Documentation 📑
+## :bookmark_tabs: Documentation
 
 Full documentation of the FloWeek Tracker is
 available <a href="https://marika9725.github.io/FloWeek-Tracker/FloWeekTracker/module-summary.html">here</a>. It
 contains detailed information about the constructed packages, classes, methods and fields.
 
-## Licenses 🔱
+## :balance_scale: Licenses
 
 For complete license terms, see the [LICENSE](LICENSE.md) file.
 
-### For FloWeek Tracker 🔱
+### :balance_scale: For FloWeek Tracker
 
 This software is licensed under a custom license with the following terms:
 
@@ -223,7 +222,7 @@ This software is licensed under a custom license with the following terms:
    or <a href="www.linkedin.com/in/maria-szewczyk/">LinkedIn</a>
 8. **Disclaimer:** Provided "as if" without warranties. The Licensor is not liable for any damages.
 
-### For used libraries 🔱
+### :balance_scale: For used libraries
 
 * **Maven**: Apache 2.0 license
 * **Gson**: Apache 2.0 license
@@ -235,7 +234,7 @@ This software is licensed under a custom license with the following terms:
 * **Hamcrest**: BSD license
 * **Awaitility**: Apache 2.0
 
-## Sources ℹ️ ️
+## :information_source: Sources
 
 The application was created to practice the knowledge gained from:
 
@@ -245,7 +244,7 @@ The application was created to practice the knowledge gained from:
   Git course created by Mateusz</a>
 * <a href="https://www.udemy.com/course/testy-jednostkowe/learn/lecture/14103154?start=0"> "Testy jednostkowe - JUnit 5, Mockito 2, TDD" by Dawid Nowak and Paweł Ćwik</a>
 
-## Contact 📞
+## :telephone_receiver: Contact
 
 <a href="https://www.linkedin.com/in/maria-szewczyk/">
 <img src="pictures-readme/logos/linkedin-logo.png" width="80" alt="linked-in" style="margin-right: 10px"></a>
